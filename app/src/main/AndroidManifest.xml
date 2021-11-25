@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.kike_ou">
 
+    <uses-feature android:name="android.hardware.camera.any" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -21,6 +24,16 @@
 
         <activity
             android:name=".QRGeneratorActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.GEN" />
+
+                <category android:name="android.intent.category.GEN" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".QRScanActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.GEN" />
