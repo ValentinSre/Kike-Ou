@@ -28,8 +28,13 @@ ext.addRepos = this.&addRepos
 
 def build_versions = [:]
     build_versions.app_id = "com.example.kike_ou"
+<<<<<<< HEAD
     build_versions.min_sdk = 28
     build_versions.target_sdk = 30
+=======
+    build_versions.min_sdk = 23
+    build_versions.target_sdk = 31
+>>>>>>> main
     build_versions.compil_sdk = 31
     build_versions.version_code = 1
     build_versions.version_name = "1.0"
