@@ -24,7 +24,6 @@ import com.google.mlkit.vision.objects.ObjectDetection
 import com.google.mlkit.vision.objects.ObjectDetector
 import com.google.mlkit.vision.objects.custom.CustomObjectDetectorOptions
 
-
 //Naming convention: camera_layout.xml layout -> CameraLayoutBinding
 import com.example.kike_ou.databinding.ActivityQrScanBinding
 import com.google.mlkit.vision.barcode.BarcodeScannerOptions
@@ -97,7 +96,7 @@ class QRScanActivity : AppCompatActivity() {
 
         val barcodeScanner: BarcodeScanner = BarcodeScanning.getClient(
             BarcodeScannerOptions.Builder()
-                .setBarcodeFormats(Barcode.FORMAT_QR_CODE)
+                .setBarcodeFormats(Barcode.FORMAT_ALL_FORMATS)
                 .build()
         )
 
@@ -125,9 +124,9 @@ class QRScanActivity : AppCompatActivity() {
                     val image = imageProxy.image
                     if(image != null) {
                         val processImage = InputImage.fromMediaImage(image, rotationDegrees)
-                        objectDetector.process(processImage)
+                        /*objectDetector.process(processImage)
                             .addOnFailureListener {
-                                Log.e("QRScanActivity","Error: $it.message")
+                                Log.e("CameraActivity","Error: $it.message")
                                 imageProxy.close()
                             }.addOnSuccessListener { objects ->
                                 for( it in objects) {
@@ -138,18 +137,27 @@ class QRScanActivity : AppCompatActivity() {
                                     binding.layout.addView(element,1)
                                 }
                                 imageProxy.close()
-                            }
+                            }*/
 
                         //See https://developers.google.com/ml-kit/vision/barcode-scanning/android
-                        /*barcodeScanner.process(processImage).addOnFailureListener {
+                        //See https://github.com/googlesamples/mlkit/blob/2f80c301bae79136efa9096881b6e44bee7866a3/android/android-snippets/app/src/main/java/com/google/example/mlkit/kotlin/BarcodeScanningActivity.kt#L44-L75
+                        barcodeScanner.process(processImage).addOnFailureListener {
                             Log.e("ScannerActivity", "Error: $it.message")
                             imageProxy.close()
                         }.addOnSuccessListener { barcodes ->
+                            var rawValue = ""
                             for (it in barcodes) {
-                              ...
+                                if (!rawValue.equals(it.rawValue)) {
+                                    rawValue = it.rawValue
+                                    Toast.makeText(
+                                        this,
+                                        "found QrCode: $rawValue",
+                                        Toast.LENGTH_LONG
+                                    ).show()
+                                }
                             }
                             imageProxy.close()
-                        }*/
+                        }
                     }
                 })
 
