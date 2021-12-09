@@ -7,6 +7,8 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
@@ -16,6 +18,29 @@ class QRGeneratorActivity  : AppCompatActivity() {
 
     private val NO_COMPRESSION = 100
     private val QR_CODE_FILE_NAME = "myqrcode"
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+
+        super.onCreateOptionsMenu(menu)
+        menuInflater.inflate(R.menu.activity_menu,menu)
+
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        super.onOptionsItemSelected(item)
+        val QR_scan = Intent(this, QRScanActivity::class.java)
+
+        when (item?.itemId)
+        {
+            R.id.scanButton ->
+            {
+                startActivity(QR_scan)
+            }
+
+        }
+        return true
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
