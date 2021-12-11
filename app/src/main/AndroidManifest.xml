@@ -36,6 +36,16 @@
          </intent-filter>
      </activity>
 
+    <activity
+        android:name=".FormActivity"
+        android:exported="true">
+        <intent-filter>
+            <action android:name="android.intent.action.GEN" />
+
+            <category android:name="android.intent.category.GEN" />
+        </intent-filter>
+    </activity>
+
      <activity
          android:name=".QRScanActivity"
          android:exported="true">

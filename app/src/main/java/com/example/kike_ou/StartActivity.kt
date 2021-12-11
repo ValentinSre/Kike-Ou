@@ -14,10 +14,7 @@ class StartActivity : AppCompatActivity() {
 
         val mainActivity = Intent(this,MainActivity::class.java)
 
-
         val boutonStart : ImageView = findViewById(R.id.logo)
-
-
 
         boutonStart.setOnClickListener{
             startActivity(mainActivity)

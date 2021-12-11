@@ -13,6 +13,7 @@ import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import net.glxn.qrgen.android.QRCode
+import org.json.JSONObject
 
 class QRGeneratorActivity  : AppCompatActivity() {
 
@@ -50,21 +51,8 @@ class QRGeneratorActivity  : AppCompatActivity() {
             this.findViewById(R.id.bt_generate_qr_code) as androidx.appcompat.widget.AppCompatButton
         var qrCodeView =
             this.findViewById(R.id.qr_code_view) as androidx.appcompat.widget.AppCompatImageView
-        var json = " { id: string\n" +
-                "  name: string\n" +
-                " photo: Url?\n" +
-                " contact: [ \n" +
-                "     { key:  \"email\" , value : string },\n" +
-                "     { key: \"tel\", value: string },\n" +
-                "     { key: \"face de  book\", value: string},\n" +
-                "  ]\n" +
-                " week : 43" +
-                "  loc: [ \n" +
-                "     { day: 1, value: \"teletravail\" },\n" +
-                "     { day : 3, value: \"Off\" },\n" +
-                "     { day : 5: value: \"WF 036\" } \n" +
-                "  ]\n" +
-                "}"
+        val json = JSONObject(intent.getStringExtra("ITEM_EXTRA")).toString()
+
         var share =
             this.findViewById(R.id.share) as com.google.android.material.floatingactionbutton.FloatingActionButton
 
