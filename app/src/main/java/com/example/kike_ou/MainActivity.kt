@@ -43,9 +43,8 @@ class MainActivity : AppCompatActivity() {
         val userList: Button = findViewById(R.id.userList)
 
         addUser.setOnClickListener{
-            val QRGenIntent = Intent(this,QRGeneratorActivity::class.java)
-            startActivity(QRGenIntent)
-
+            val FormIntent = Intent(this,FormActivity::class.java)
+            startActivity(FormIntent)
         }
 
         userList.setOnClickListener{
