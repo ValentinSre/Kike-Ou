@@ -3,13 +3,14 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import kotlinx.coroutines.flow.Flow
 
 
 @Dao
 interface EmployeeDAO {
 
     @Query("SELECT * FROM employee_table ORDER BY id ASC")
-    fun getAllEmployees(): List<Employee>
+    fun getAllEmployees(): Flow<List<Employee>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(employee: Employee)

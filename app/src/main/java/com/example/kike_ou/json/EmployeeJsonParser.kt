@@ -4,7 +4,7 @@ import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.example.kike_ou.employee.Employee
 
-class AgendaJsonParser {
+class EmployeeJsonParser {
 
     companion object {
         fun parseEmployee(json: String): Employee? {

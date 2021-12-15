@@ -73,7 +73,10 @@ dependencies {
     implementation 'org.tensorflow:tensorflow-lite-support:0.1.0'
     implementation 'org.tensorflow:tensorflow-lite-metadata:0.1.0'
 
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.4.0"
+
     implementation 'com.squareup.moshi:moshi-kotlin:1.12.0'
+    kapt 'com.squareup.moshi:moshi-kotlin-codegen:1.12.0'
     testImplementation deps.junit
     androidTestImplementation deps.test.ext_junit
     androidTestImplementation deps.espresso.core
@@ -81,5 +84,6 @@ dependencies {
     implementation "androidx.room:room-ktx:2.3.0"
     implementation "androidx.fragment:fragment-ktx:1.4.0"
     kapt "androidx.room:room-compiler:2.3.0"
+
     androidTestImplementation "androidx.room:room-testing:2.3.0"
 }

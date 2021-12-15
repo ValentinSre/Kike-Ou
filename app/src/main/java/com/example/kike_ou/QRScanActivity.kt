@@ -1,6 +1,7 @@
 package com.example.kike_ou
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.content.pm.PackageManager
@@ -14,6 +15,8 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.common.util.concurrent.ListenableFuture
 import com.google.mlkit.common.model.LocalModel
 import com.google.mlkit.vision.barcode.Barcode
@@ -26,9 +29,14 @@ import com.google.mlkit.vision.objects.custom.CustomObjectDetectorOptions
 
 //Naming convention: camera_layout.xml layout -> CameraLayoutBinding
 import com.example.kike_ou.databinding.ActivityQrScanBinding
+import com.example.kike_ou.employee.EmployeeRepository
+import com.example.kike_ou.employee.EmployeeRoomDatabase
+import com.example.kike_ou.json.EmployeeJsonParser
+import com.example.kike_ou.viewmodels.EmployeeViewModel
+import com.example.kike_ou.viewmodels.EmployeeViewModelFactory
 import com.google.mlkit.vision.barcode.BarcodeScannerOptions
-
-
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.SupervisorJob
 
 
 class QRScanActivity : AppCompatActivity() {
@@ -43,6 +51,8 @@ class QRScanActivity : AppCompatActivity() {
         //binding view element from layout
         binding =  ActivityQrScanBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
     }
 
 
@@ -149,11 +159,10 @@ class QRScanActivity : AppCompatActivity() {
                             for (it in barcodes) {
                                 if (!rawValue.equals(it.rawValue)) {
                                     rawValue = it.rawValue
-                                    Toast.makeText(
-                                        this,
-                                        "found QrCode: $rawValue",
-                                        Toast.LENGTH_LONG
-                                    ).show()
+                                    val agenda =EmployeeJsonParser.parseEmployee(rawValue)
+                                    val mainIntent:Intent = Intent(this,MainActivity::class.java)
+                                    startActivity(mainIntent)
+
                                 }
                             }
                             imageProxy.close()
