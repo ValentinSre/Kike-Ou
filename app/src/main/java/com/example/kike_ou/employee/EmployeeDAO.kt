@@ -21,6 +21,6 @@ interface EmployeeDAO {
     suspend fun deleteEmployee(id: Int)
 
     @Query("SELECT * from employee_table where name= :nom")
-    suspend fun getEmployeeByName(nom: String)
+    suspend fun getEmployeeByName(nom: String): Employee
 }
 
