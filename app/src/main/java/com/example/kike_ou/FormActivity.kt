@@ -17,6 +17,7 @@ import org.json.JSONArray
 import org.json.JSONException
 
 import org.json.JSONObject
+import java.text.Normalizer
 
 
 class FormActivity:AppCompatActivity() {
@@ -55,22 +56,23 @@ class FormActivity:AppCompatActivity() {
 
         GenQR.setOnClickListener{
 
-            val nom: String = editName.getText().toString()
-            val adresse: String = editMail.getText().toString()
+            val nom: String = Normalizer.normalize(editName.getText().toString(),Normalizer.Form.NFD)
+            val adresse:String = Normalizer.normalize(editMail.getText().toString(),Normalizer.Form.NFD)
             val tel: String = editTel.getText().toString()
-            val facebook: String = editFacebook.getText().toString()
+            val facebook: String = Normalizer.normalize(editFacebook.getText().toString(),Normalizer.Form.NFD)
 
-            val contactDic = mapOf("email" to adresse, "tel" to tel, "fb" to facebook)
 
-            val edtDic = listOf<Location>(Location(1,jour1),Location(2,jour2),Location(3,jour3),Location(4,jour4),Location(5,jour5))
+            val contact = JSONObject()
+            contact.put("mail",adresse)
+            contact.put("tel",tel)
+            contact.put("fb",facebook)
 
 
             val json = JSONObject()
             try {
                 json.put("name", nom)
-                json.put("week", semaine)
-                json.put("contact", contactDic)
-                json.put("loc", edtDic)
+                json.put("contacts", contact)
+
             } catch (e: JSONException) {
                 e.printStackTrace()
             }

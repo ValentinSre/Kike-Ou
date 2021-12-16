@@ -37,10 +37,10 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.197"
         app:srcCompat="@drawable/_7768"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
 
     <ImageButton
-        android:id="@+id/imageBouton2"
+        android:id="@+id/buttonList"
         android:layout_width="300px"
         android:layout_height="400px"
         android:adjustViewBounds="true"
@@ -51,6 +51,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageBouton"
         app:srcCompat="@drawable/img_82026__1_"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

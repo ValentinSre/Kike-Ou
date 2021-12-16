@@ -11,9 +11,12 @@ import android.widget.EditText
 import android.widget.ImageView
 import androidx.core.content.ContextCompat.startActivity
 import androidx.databinding.DataBindingUtil.setContentView
+import com.example.kike_ou.employee.Location
+import org.json.JSONArray
 import org.json.JSONException
 
 import org.json.JSONObject
+import java.text.Normalizer
 
 
 class FormActivityEDT:AppCompatActivity() {
@@ -55,18 +58,48 @@ class FormActivityEDT:AppCompatActivity() {
         GenQR.setOnClickListener{
 
             val semaine: String = editWeek.getText().toString()
-            val jour1: String = editDay1.getText().toString()
-            val jour2: String = editDay2.getText().toString()
-            val jour3: String = editDay3.getText().toString()
-            val jour4: String = editDay4.getText().toString()
-            val jour5: String = editDay5.getText().toString()
+            val jour1: String = Normalizer.normalize(editDay1.getText().toString(),Normalizer.Form.NFD)
+            val jour2: String = Normalizer.normalize(editDay2.getText().toString(),Normalizer.Form.NFD)
+            val jour3: String = Normalizer.normalize(editDay3.getText().toString(),Normalizer.Form.NFD)
+            val jour4: String = Normalizer.normalize(editDay4.getText().toString(),Normalizer.Form.NFD)
+            val jour5: String = Normalizer.normalize(editDay5.getText().toString(),Normalizer.Form.NFD)
+
+            val day1 = JSONObject()
+            day1.put("day",1)
+            day1.put("place",jour1)
+
+            val day2 = JSONObject()
+            day2.put("day",2)
+            day2.put("place",jour2)
+
+            val day3 = JSONObject()
+            day3.put("day",3)
+            day3.put("place",jour3)
+
+            val day4 = JSONObject()
+            day4.put("day",4)
+            day4.put("place",jour4)
+
+            val day5= JSONObject()
+            day5.put("day",5)
+            day5.put("place",jour5)
 
             val edtDic = mapOf("day 1" to jour1, "day2" to jour2, "day3" to jour3, "day4" to jour4, "day5" to jour5)
+
+            val edt = JSONArray()
+            edt.put(day1)
+            edt.put(day2)
+            edt.put(day3)
+            edt.put(day4)
+            edt.put(day5)
+
+            println(edt)
+
             val json = JSONObject(intent.getStringExtra("ITEM_EXTRA"))
 
             try {
                 json.put("week", semaine)
-                json.put("loc", edtDic)
+                json.put("loc", edt)
             } catch (e: JSONException) {
                 e.printStackTrace()
             }

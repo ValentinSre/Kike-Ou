@@ -17,6 +17,8 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.kike_ou.adapters.EmployeeListAdapter
+import com.example.kike_ou.databinding.ActivityListBinding
 import com.google.common.util.concurrent.ListenableFuture
 import com.google.mlkit.common.model.LocalModel
 import com.google.mlkit.vision.barcode.Barcode
@@ -45,12 +47,25 @@ class QRScanActivity : AppCompatActivity() {
     private lateinit var binding: ActivityQrScanBinding
     private lateinit var objectDetector: ObjectDetector
     private lateinit var cameraProviderFuture : ListenableFuture<ProcessCameraProvider>
+    private lateinit var _employeeViewModel: EmployeeViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //binding view element from layout
         binding =  ActivityQrScanBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+
+        val scope = CoroutineScope(SupervisorJob())
+        val database = EmployeeRoomDatabase.getDatabase(this, scope)
+        val repository = EmployeeRepository(database.employeeDao())
+
+        // Get a new or existing ViewModel using Agenda view model factory.
+        _employeeViewModel = ViewModelProvider(
+            this,
+            EmployeeViewModelFactory(repository)
+        ).get(EmployeeViewModel::class.java)
 
 
     }
@@ -159,13 +174,19 @@ class QRScanActivity : AppCompatActivity() {
                             for (it in barcodes) {
                                 if (!rawValue.equals(it.rawValue)) {
                                     rawValue = it.rawValue
-                                    println(rawValue)
+                                    println(rawValue[2])
                                     val employee = EmployeeJsonParser.parseEmployee(rawValue)
                                     Toast.makeText(
                                         this,
                                         "found QrCode: $rawValue",
                                         Toast.LENGTH_LONG
                                     ).show()
+                                    employee?.let {
+                                        _employeeViewModel.insertAgenda(employee)
+                                    }
+
+                                    val intentList = Intent(this,ListActivity::class.java)
+                                    startActivity(intentList)
 
                                 }
                             }

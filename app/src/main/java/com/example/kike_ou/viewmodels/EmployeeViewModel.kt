@@ -21,4 +21,8 @@ class EmployeeViewModel (private val repository: EmployeeRepository) : ViewModel
     fun insertAgenda(agd: Employee) = scope.launch {
         repository.insert(agd)
     }
+
+    fun getEmployee(emp: Employee) = scope.launch {
+        repository.oneEmployee(emp.name,emp.week)
+    }
 }

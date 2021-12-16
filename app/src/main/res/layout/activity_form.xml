@@ -48,7 +48,7 @@
             <EditText
                 android:id="@+id/editName"
                 android:layout_width="113dp"
-                android:layout_height="45dp"
+                android:layout_height="48dp"
                 android:ems="10"
                 android:hint="Nom"
                 android:inputType="textPersonName"
@@ -95,7 +95,7 @@
                 android:layout_height="50dp"
                 android:ems="10"
                 android:hint="Téléphone"
-                android:inputType="textPersonName"
+                android:inputType="number"
                 android:minHeight="48dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

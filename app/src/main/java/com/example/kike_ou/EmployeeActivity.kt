@@ -1,17 +1,15 @@
 package com.example.kike_ou
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-
 import android.view.Menu
-
 import android.view.MenuItem
+import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 
-
-class MainActivity : AppCompatActivity() {
+class EmployeeActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
 
@@ -39,23 +37,13 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        //val addUser : Button = findViewById(R.id.addUser)
-        val userList: ImageButton = findViewById(R.id.buttonList)
-        val addUser: ImageButton = findViewById(R.id.imageBouton)
+        setContentView(R.layout.activity_employee)
 
-
-
-        addUser.setOnClickListener{
-            val FormIntent = Intent(this,FormActivity::class.java)
-            startActivity(FormIntent)
-        }
-
-        userList.setOnClickListener{
-            val UserListIntent = Intent(this,ListActivity::class.java)
-            startActivity(UserListIntent)
-        }
-
+        val valueLundi: TextView = findViewById(R.id.valLundi)
+        val valueMardi: TextView = findViewById(R.id.valMardi)
+        val valueMercredi: TextView = findViewById(R.id.valMercredi)
+        val valueJeudi: TextView = findViewById(R.id.valJeudi)
+        val valueVendredi: TextView = findViewById(R.id.valVendredi)
 
 
     }

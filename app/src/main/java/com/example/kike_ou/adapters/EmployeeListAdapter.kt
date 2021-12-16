@@ -4,21 +4,26 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import com.example.kike_ou.databinding.RecyclerviewItemBinding
+import com.example.kike_ou.databinding.RecycleviewItemBinding
 import com.example.kike_ou.employee.Employee
 
 class EmployeeListAdapter(): ListAdapter<Employee, EmployeeViewHolder>(AgendaDiff()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EmployeeViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        var binding = RecyclerviewItemBinding.inflate(inflater, parent, false)
+        var binding = RecycleviewItemBinding.inflate(inflater, parent, false)
         return EmployeeViewHolder.create(binding)
     }
 
     override fun onBindViewHolder(holder: EmployeeViewHolder, position: Int) {
         val current: Employee? = getItem(position)
-        val todisplay = current?.name + " / " + current?.contact?.mail + " / " + current?.loc?.get(0)?.day  + "-" + current?.loc?.get(0)?.place
-        holder.bind(todisplay)
+        val todisplay = current?.name
+        val weekDisplay : Int? = current?.week
+        val email : String? = current?.contact?.mail
+        val tel : String? = current?.contact?.tel
+        val fb : String? = current?.contact?.fb
+        val agenda = current?.loc
+        holder.bind(todisplay,weekDisplay,email,tel,fb,agenda)
     }
 
     internal class AgendaDiff : DiffUtil.ItemCallback<Employee>() {

@@ -52,25 +52,28 @@
             android:layout_height="match_parent">
 
 
+
             <EditText
                 android:id="@+id/editWeek"
                 android:layout_width="130dp"
-                android:layout_height="40dp"
+                android:layout_height="48dp"
                 android:ems="10"
                 android:hint="Semaine"
-                android:inputType="textPersonName"
+                android:inputType="number"
                 android:minHeight="48dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.159"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintVertical_bias="0.0"
+
+                />
 
             <EditText
                 android:id="@+id/editDay1"
                 android:layout_width="130dp"
-                android:layout_height="40dp"
+                android:layout_height="48dp"
                 android:ems="10"
                 android:hint="Jour 1"
                 android:inputType="textPersonName"
@@ -85,7 +88,7 @@
             <EditText
                 android:id="@+id/editDay2"
                 android:layout_width="130dp"
-                android:layout_height="40dp"
+                android:layout_height="48dp"
                 android:ems="10"
                 android:hint="Jour 2"
                 android:inputType="textPersonName"
@@ -100,7 +103,7 @@
             <EditText
                 android:id="@+id/editDay3"
                 android:layout_width="130dp"
-                android:layout_height="40dp"
+                android:layout_height="48dp"
                 android:ems="10"
                 android:hint="Jour 3"
                 android:inputType="textPersonName"
@@ -115,7 +118,7 @@
             <EditText
                 android:id="@+id/editDay4"
                 android:layout_width="130dp"
-                android:layout_height="40dp"
+                android:layout_height="48dp"
                 android:ems="10"
                 android:hint="Jour 4"
                 android:inputType="textPersonName"
@@ -130,7 +133,7 @@
             <EditText
                 android:id="@+id/editDay5"
                 android:layout_width="130dp"
-                android:layout_height="40dp"
+                android:layout_height="48dp"
                 android:ems="10"
                 android:hint="Jour 5"
                 android:inputType="textPersonName"
