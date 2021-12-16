@@ -8,6 +8,7 @@ import android.widget.Button
 import android.view.Menu
 
 import android.view.MenuItem
+import android.widget.ImageButton
 
 
 class MainActivity : AppCompatActivity() {
@@ -39,8 +40,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val addUser : Button = findViewById(R.id.addUser)
-        val userList: Button = findViewById(R.id.userList)
+        //val addUser : Button = findViewById(R.id.addUser)
+        val userList: ImageButton = findViewById(R.id.imageBouton2)
+        val addUser: ImageButton = findViewById(R.id.imageBouton)
+
+
 
         addUser.setOnClickListener{
             val FormIntent = Intent(this,FormActivity::class.java)
