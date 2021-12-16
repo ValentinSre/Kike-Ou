@@ -49,13 +49,13 @@ abstract class EmployeeRoomDatabase : RoomDatabase() {
                 super.onCreate(db)
                 INSTANCE?.let { database ->
                     scope.launch(Dispatchers.IO) {
-                        populate(database.employeeDao())
+                        //populate(database.employeeDao())
                     }
                 }
             }
         }
 
-        /* populate db in coroutine*/
+        /* populate db in coroutine
         suspend fun populate(employeeDAO: EmployeeDAO) {
             employeeDAO.deleteAll()
             var contact = Contact("guillaume.chatelet@orange.com", null, null)
@@ -67,6 +67,6 @@ abstract class EmployeeRoomDatabase : RoomDatabase() {
             location = arrayListOf<Location>(Location(3, "en TT"),Location(4, "en TT"))
             agenda = Employee("pierre crepieux",  47,location, contact)
             employeeDAO.insert(agenda)
-        }
+        }*/
     }
 }

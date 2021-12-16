@@ -11,6 +11,9 @@ import android.widget.EditText
 import android.widget.ImageView
 import androidx.core.content.ContextCompat.startActivity
 import androidx.databinding.DataBindingUtil.setContentView
+import com.example.kike_ou.employee.Location
+import com.example.kike_ou.json.ListLocationConverter
+import org.json.JSONArray
 import org.json.JSONException
 
 import org.json.JSONObject
@@ -72,13 +75,15 @@ class FormActivity:AppCompatActivity() {
             val jour5: String = editDay5.getText().toString()
 
             val contactDic = mapOf("email" to adresse, "tel" to tel, "fb" to facebook)
-            val edtDic = mapOf("day 1" to jour1, "day2" to jour2, "day3" to jour3, "day4" to jour4, "day5" to jour5)
+
+            val edtDic = listOf<Location>(Location(1,jour1),Location(2,jour2),Location(3,jour3),Location(4,jour4),Location(5,jour5))
+
 
             val json = JSONObject()
             try {
                 json.put("name", nom)
-                json.put("contact", contactDic)
                 json.put("week", semaine)
+                json.put("contact", contactDic)
                 json.put("loc", edtDic)
             } catch (e: JSONException) {
                 e.printStackTrace()

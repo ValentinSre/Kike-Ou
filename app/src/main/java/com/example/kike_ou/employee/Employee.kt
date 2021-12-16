@@ -27,7 +27,9 @@ data class Employee(
                     @field:Json(name = "loc") var loc: List<Location>,
 
                     @Embedded
-                    @field:Json(name = "contacts") var contact:Contact) {
+                    @field:Json(name = "contacts") var contact:Contact)
+
+                    {
 
                     @ColumnInfo(name = "id")
                     @PrimaryKey(autoGenerate = true)

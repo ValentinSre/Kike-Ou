@@ -159,9 +159,13 @@ class QRScanActivity : AppCompatActivity() {
                             for (it in barcodes) {
                                 if (!rawValue.equals(it.rawValue)) {
                                     rawValue = it.rawValue
-                                    val agenda =EmployeeJsonParser.parseEmployee(rawValue)
-                                    val mainIntent:Intent = Intent(this,MainActivity::class.java)
-                                    startActivity(mainIntent)
+                                    println(rawValue)
+                                    val employee = EmployeeJsonParser.parseEmployee(rawValue)
+                                    Toast.makeText(
+                                        this,
+                                        "found QrCode: $rawValue",
+                                        Toast.LENGTH_LONG
+                                    ).show()
 
                                 }
                             }

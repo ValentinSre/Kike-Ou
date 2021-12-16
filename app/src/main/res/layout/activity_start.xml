@@ -15,7 +15,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.394"
-        app:srcCompat="@drawable/logosmdpi" />
+        app:srcCompat="@drawable/logosxhdpi" />
 
     <TextView
         android:id="@+id/textView2"

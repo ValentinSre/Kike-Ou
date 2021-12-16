@@ -53,6 +53,8 @@ class QRGeneratorActivity  : AppCompatActivity() {
             this.findViewById(R.id.qr_code_view) as androidx.appcompat.widget.AppCompatImageView
         val json = JSONObject(intent.getStringExtra("ITEM_EXTRA")).toString()
 
+        println(json)
+
         var share =
             this.findViewById(R.id.share) as com.google.android.material.floatingactionbutton.FloatingActionButton
 
