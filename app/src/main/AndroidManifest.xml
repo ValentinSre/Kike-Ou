@@ -3,11 +3,11 @@
     package="com.example.kike_ou">
 
     <uses-feature android:name="android.hardware.camera.any" />
+
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
-
         android:icon="@mipmap/logosmdpi"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/logosmdpi"
@@ -18,34 +18,30 @@
             android:name=".StartActivity"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-         <intent-filter>
-             <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".QRGeneratorActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.GEN" />
 
-             <category android:name="android.intent.category.LAUNCHER" />
-         </intent-filter>
-     </activity>
+                <category android:name="android.intent.category.GEN" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".FormActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.GEN" />
 
-     <activity
-         android:name=".QRGeneratorActivity"
-         android:exported="true">
-         <intent-filter>
-             <action android:name="android.intent.action.GEN" />
-
-             <category android:name="android.intent.category.GEN" />
-         </intent-filter>
-     </activity>
-
-    <activity
-        android:name=".FormActivity"
-        android:exported="true">
-        <intent-filter>
-            <action android:name="android.intent.action.GEN" />
-
-            <category android:name="android.intent.category.GEN" />
-        </intent-filter>
-    </activity>
-
+                <category android:name="android.intent.category.GEN" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".FormActivityEDT"
             android:exported="true">
@@ -55,27 +51,24 @@
                 <category android:name="android.intent.category.GEN" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".QRScanActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.GEN" />
 
-     <activity
-         android:name=".QRScanActivity"
-         android:exported="true">
-         <intent-filter>
-             <action android:name="android.intent.action.GEN" />
+                <category android:name="android.intent.category.GEN" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.GEN" />
 
-             <category android:name="android.intent.category.GEN" />
-         </intent-filter>
-     </activity>
-
-     <activity
-         android:name=".MainActivity"
-         android:exported="true">
-         <intent-filter>
-             <action android:name="android.intent.action.GEN" />
-
-             <category android:name="android.intent.category.GEN" />
-         </intent-filter>
-     </activity>
-
- </application>
+                <category android:name="android.intent.category.GEN" />
+            </intent-filter>
+        </activity>
+    </application>
 
 </manifest>
