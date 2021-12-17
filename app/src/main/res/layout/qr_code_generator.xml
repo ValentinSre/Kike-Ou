@@ -17,27 +17,33 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="@string/generate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="114dp" />
+        tools:ignore="MissingConstraints" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/qr_code_view"
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:layout_marginTop="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bt_generate_qr_code"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="35dp" />
+        app:layout_constraintVertical_bias="0.17"
+        tools:ignore="MissingConstraints" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/share"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/ic_menu_share"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:contentDescription="@string/share"
         android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@+id/qr_code_view"
-        tools:ignore="MissingConstraints"
-        android:contentDescription="@string/share" />
+        app:layout_constraintBottom_toTopOf="@+id/qr_code_view"
+        app:layout_constraintTop_toTopOf="@id/bt_generate_qr_code"
+        app:srcCompat="@android:drawable/ic_menu_share"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
