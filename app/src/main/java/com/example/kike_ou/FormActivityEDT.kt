@@ -21,6 +21,8 @@ import java.text.Normalizer
 
 class FormActivityEDT:AppCompatActivity() {
 
+    private val REGEX_UNACCENT = "\\p{InCombiningDiacriticalMarks}+".toRegex()
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
 
         super.onCreateOptionsMenu(menu)
@@ -58,11 +60,11 @@ class FormActivityEDT:AppCompatActivity() {
         GenQR.setOnClickListener{
 
             val semaine: String = editWeek.getText().toString()
-            val jour1: String = Normalizer.normalize(editDay1.getText().toString(),Normalizer.Form.NFD)
-            val jour2: String = Normalizer.normalize(editDay2.getText().toString(),Normalizer.Form.NFD)
-            val jour3: String = Normalizer.normalize(editDay3.getText().toString(),Normalizer.Form.NFD)
-            val jour4: String = Normalizer.normalize(editDay4.getText().toString(),Normalizer.Form.NFD)
-            val jour5: String = Normalizer.normalize(editDay5.getText().toString(),Normalizer.Form.NFD)
+            val jour1: String = editDay1.getText().toString().unaccent()
+            val jour2: String = editDay2.getText().toString().unaccent()
+            val jour3: String = editDay3.getText().toString().unaccent()
+            val jour4: String = editDay4.getText().toString().unaccent()
+            val jour5: String = editDay5.getText().toString().unaccent()
 
             val day1 = JSONObject()
             day1.put("day",1)
@@ -109,5 +111,10 @@ class FormActivityEDT:AppCompatActivity() {
             startActivity(qrGeneratorActivity)
         }
 
+
+    }
+    fun CharSequence.unaccent(): String {
+        val temp = Normalizer.normalize(this, Normalizer.Form.NFD)
+        return REGEX_UNACCENT.replace(temp, "")
     }
 }

@@ -13,14 +13,18 @@ import androidx.core.content.ContextCompat.startActivity
 import androidx.databinding.DataBindingUtil.setContentView
 import com.example.kike_ou.employee.Location
 import com.example.kike_ou.json.ListLocationConverter
+import com.google.zxing.common.StringUtils
 import org.json.JSONArray
 import org.json.JSONException
 
 import org.json.JSONObject
 import java.text.Normalizer
+import java.util.Collections.replaceAll
 
 
 class FormActivity:AppCompatActivity() {
+
+    private val REGEX_UNACCENT = "\\p{InCombiningDiacriticalMarks}+".toRegex()
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
 
@@ -56,10 +60,11 @@ class FormActivity:AppCompatActivity() {
 
         GenQR.setOnClickListener{
 
-            val nom: String = Normalizer.normalize(editName.getText().toString(),Normalizer.Form.NFD)
-            val adresse:String = Normalizer.normalize(editMail.getText().toString(),Normalizer.Form.NFD)
+            val nom: String = editName.getText().toString().unaccent()
+
+            val adresse:String = editMail.getText().toString().unaccent()
             val tel: String = editTel.getText().toString()
-            val facebook: String = Normalizer.normalize(editFacebook.getText().toString(),Normalizer.Form.NFD)
+            val facebook: String = editFacebook.getText().toString().unaccent()
 
 
             val contact = JSONObject()
@@ -82,5 +87,10 @@ class FormActivity:AppCompatActivity() {
             startActivity(EDTActivity)
         }
 
+    }
+
+    fun CharSequence.unaccent(): String {
+        val temp = Normalizer.normalize(this, Normalizer.Form.NFD)
+        return REGEX_UNACCENT.replace(temp, "")
     }
 }

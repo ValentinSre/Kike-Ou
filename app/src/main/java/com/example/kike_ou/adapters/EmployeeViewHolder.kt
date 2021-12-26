@@ -10,7 +10,7 @@ class EmployeeViewHolder private constructor(var binding: RecycleviewItemBinding
         binding.weekItem.text="Semaine : $week"
         binding.mail.text=email
         binding.tel.text=tel
-        binding.fb.text=fb
+        binding.fb.text="Facebook : $fb"
         val agn = agenda
         binding.valLundi.text=agn?.get(0)?.place
         binding.valMardi.text=agn?.get(1)?.place
